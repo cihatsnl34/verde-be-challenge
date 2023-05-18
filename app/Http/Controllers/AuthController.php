@@ -76,6 +76,7 @@ class AuthController extends Controller
         'id' => $user->id,
         'name' => $user->name,
         'email' => $user->email,
+        'role' => $user->role,
         'access_token' => $tokenResult->accessToken,
         'expires_at' => Carbon::parse($tokenResult->token->expires_at)->toDateTimeString()
     ], 201);
@@ -99,7 +100,8 @@ class AuthController extends Controller
         }
         return response()->json([
             'user' => $user,
-            'isLoggedIn' => Auth::check()
+            'isLoggedIn' => Auth::check(),
+            'isAdmin' => ($user->role == 1) ? true : false
         ]);
     }
 }
