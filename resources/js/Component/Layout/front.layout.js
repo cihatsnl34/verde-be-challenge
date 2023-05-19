@@ -309,13 +309,13 @@ const Layout = (props) => {
                                 </a>
                     </li>
                             
-                            <li className="nav-main-item">
+                            {/* <li className="nav-main-item">
                                 
                                         <a className="nav-main-link" href="be_pages_generic_blank.html">
                                         <i className="nav-main-link-icon si si-energy" />
                                             <span className="nav-main-link-name">Wallet</span>
                                         </a>
-                            </li>
+                            </li> */}
                             <li className="nav-main-item">
                                 
                                         <a className="nav-main-link" href="/booking">
