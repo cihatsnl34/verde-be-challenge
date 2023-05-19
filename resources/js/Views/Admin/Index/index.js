@@ -6,7 +6,7 @@ const Index = (props) => {
     props.AuthStore.getToken();
     return (
         <Layout>
-            <div>BURASI ADMIN INDEX</div>    
+            <div>ADMIN</div>    
         </Layout>
     )
 };

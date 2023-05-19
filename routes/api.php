@@ -25,4 +25,19 @@ Route::group([
 ],function(){
     Route::post('/logout', [\App\Http\Controllers\AuthController::class,'logout']);
     Route::post('/authenticate', [\App\Http\Controllers\AuthController::class,'authenticate']);
+    Route::resource('escapeRoom',\App\Http\Controllers\Admin\Api\EscapeRoom\indexController::class);
+    Route::resource('users',\App\Http\Controllers\Admin\Api\User\indexController::class);
+    Route::get('/allBooking', [\App\Http\Controllers\Admin\Api\Bookings\bookingController::class,'show']);
+    Route::delete('/allBooking/{id}', [\App\Http\Controllers\Admin\Api\Bookings\bookingController::class,'destroy']);
+
+    Route::get('/escape-rooms',[\App\Http\Controllers\User\Api\indexController::class,'escapeRooms']);
+    Route::get('/escape-rooms/{id}',[\App\Http\Controllers\User\Api\indexController::class,'singleEscapeRoom']);
+    Route::get('/escape-rooms/{id}/time-slots',[\App\Http\Controllers\User\Api\indexController::class,'escapeRoomTimeSlots']);
+
+    Route::post('/bookings',[\App\Http\Controllers\User\Api\bookingsController::class,'bookings']);
+    Route::get('/bookings',[\App\Http\Controllers\User\Api\bookingsController::class,'getBookings']);
+    Route::delete('/bookings/{id}',[\App\Http\Controllers\User\Api\bookingsController::class,'deleteBookings']);
+
+
+
 });

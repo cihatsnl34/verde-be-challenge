@@ -13,16 +13,17 @@ class AuthController extends Controller
         $request->validate([
             'name'=>'required|string',
             'email'=>'required|string|email|unique:users',
-            'password'=>'required|string|confirmed'
+            'password'=>'required|string|confirmed',
+            'birthday' => 'required|date'
         ]);
-
+        
         $user = new User([
             'name'=>$request->name,
             'email'=>$request->email,
             'password' => bcrypt($request->password),
+            'birthday' => $request->birthday
         ]);
         $user = $user->save();
-        
         $credentials = ['email'=>$request->email, 'password'=>$request->password];
 
         if(!Auth::attempt($credentials)) {
@@ -44,7 +45,9 @@ class AuthController extends Controller
             'name' => $user->name,
             'email' => $user->email,
             'access_token' => $tokenResult->accessToken,
-            'expires_at' => Carbon::parse($tokenResult->token->expires_at)->toDateTimeString()
+            'expires_at' => Carbon::parse($tokenResult->token->expires_at)->toDateTimeString(),
+            'birthdate' => $user->birhday,
+            'wallet' => $user->wallet
         ], 201);
     }
     
@@ -59,7 +62,7 @@ class AuthController extends Controller
 
        if(!Auth::attempt($credentials)) {
         return response()->json([
-            'message' => 'Bilgiler hatalidir kontrol ediniz.'
+            'message' => 'The information is incorrect.'
         ], 401);
        }
 
@@ -77,6 +80,8 @@ class AuthController extends Controller
         'name' => $user->name,
         'email' => $user->email,
         'role' => $user->role,
+        'birthdate' => $user->birhday,
+        'wallet' => $user->wallet,
         'access_token' => $tokenResult->accessToken,
         'expires_at' => Carbon::parse($tokenResult->token->expires_at)->toDateTimeString()
     ], 201);
@@ -85,7 +90,7 @@ class AuthController extends Controller
     public function logout(Request $request) {
        $request->user()->token()->revoke();
        return response()->json([
-        'message' => 'Cikis yapildi.'
+        'message' => 'Logged out.'
        ]);
     }
 

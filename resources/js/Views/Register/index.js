@@ -24,10 +24,13 @@ const Register = (props) => {
             .required('Email is not empty'),
         name:Yup.string().required('Name is not empty'),
         password:Yup.string().required('Password is not empty'),
-        password_confirmation:Yup.string().oneOf([Yup.ref('password'), null], 'Passwords do not match')
+        password_confirmation:Yup.string().oneOf([Yup.ref('password'), null], 'Passwords do not match'),
+        birthday:Yup.date().required('Birthday is not empty'),
                 
     });
+    
     const handleSubmit = (values) => {
+        
         axios.post('/api/auth/register', {...values})
             .then((res) => {
                 if(res.data.success){
@@ -77,7 +80,8 @@ const Register = (props) => {
           name:'',
           email:'',
           password:'',
-          password_confirmation:''
+          password_confirmation:'',
+          birthday:''
         }}
         onSubmit={handleSubmit}
         validationSchema={validationSchema}
@@ -115,6 +119,10 @@ const Register = (props) => {
                                                     <div className="form-group">
                                                         <input type="email" className="form-control form-control-lg form-control-alt" id="signup-email" name="email" onChange={handleChange('email')} values={values.email} placeholder="Email"/>
                                                         {(errors.email && touched.email) && <p>{errors.email}</p>}
+                                                    </div>
+                                                    <div className="form-group">
+                                                        <input type="date" className="form-control form-control-lg form-control-alt" id="signup-email" name="birthday" onChange={handleChange('birthday')} values={values.birthday} placeholder="Birthday"/>
+                                                        {(errors.birthday && touched.birthday) && <p>{errors.birthday}</p>}
                                                     </div>
                                                     <div className="form-group">
                                                         <input type="password" className="form-control form-control-lg form-control-alt" id="signup-password" name="password" placeholder="Password" onChange={handleChange('password')} values={values.password}/>
