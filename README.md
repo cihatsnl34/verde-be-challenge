@@ -1,7 +1,7 @@
 # Set up the project;
-1 - Database Connection ;
-    1.1 : Get the verde-be-challenge.sql file in the database-backup folder.
-    1.2 :Import into MySQL.
+1 - Database Connection ; <br>
+    1.1 : Get the verde-be-challenge.sql file in the database-backup folder.<br>
+    1.2 :Import into MySQL.<br>
     
 # Run the project;
 1 - Set up the Package..json -> npm install
