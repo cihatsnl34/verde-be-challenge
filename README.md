@@ -8,7 +8,7 @@
 2 - Run the npm : npm run watch<br><br>
 3 - PHP (Laravel) start : php artisan serve
 
-#Run the test;
+# Run the test;
 1 - Open the Terminal<br><br>
 2 - Paste '/vendor/bin/phpunit' terminal<br><br>
 3 - Press enter and run.
