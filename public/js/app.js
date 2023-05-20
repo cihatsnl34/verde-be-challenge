@@ -4410,10 +4410,10 @@ var Create = function Create(props) {
           className: "col-md-12",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
             className: "js-wizard-simple block block",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("ul", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("ul", {
               className: "nav nav-tabs nav-tabs-block nav-justified",
               role: "tablist",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("li", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("li", {
                 className: "nav-item",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("a", {
                   className: "nav-link active",
@@ -4421,15 +4421,7 @@ var Create = function Create(props) {
                   "data-toggle": "tab",
                   children: "1. Personal"
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("li", {
-                className: "nav-item",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("a", {
-                  className: "nav-link",
-                  href: "#wizard-progress-step2",
-                  "data-toggle": "tab",
-                  children: "2. Details"
-                })
-              })]
+              })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("form", {
               action: "#",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
@@ -4444,9 +4436,9 @@ var Create = function Create(props) {
                     className: "progress-bar progress-bar-striped progress-bar-animated bg-primary",
                     role: "progressbar",
                     style: {
-                      width: "50%"
+                      width: "100%"
                     },
-                    "aria-valuenow": 50,
+                    "aria-valuenow": 100,
                     "aria-valuemin": 0,
                     "aria-valuemax": 100
                   })
@@ -4476,12 +4468,7 @@ var Create = function Create(props) {
                   }), errors.price && touched.price && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
                     className: "form-error",
                     children: errors.price
-                  })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
-                  className: "tab-pane",
-                  id: "wizard-progress-step2",
-                  role: "tabpanel",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
                     className: "form-group",
                     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("h2", {
                       children: "Escape Rooms Description"
@@ -4552,38 +4539,24 @@ var Create = function Create(props) {
                       });
                     })]
                   })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+                  className: "tab-pane",
+                  id: "wizard-progress-step2",
+                  role: "tabpanel"
                 })]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
                 className: "block-content block-content-sm block-content-full bg-body-light rounded-bottom",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
                   className: "row",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
-                    className: "col-6",
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("button", {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+                    className: "col-12 text-right",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
                       type: "button",
-                      className: "btn btn-secondary",
-                      "data-wizard": "prev",
-                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("i", {
-                        className: "fa fa-angle-left mr-1"
-                      }), " Previous"]
-                    })
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
-                    className: "col-6 text-right",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("button", {
-                      type: "button",
-                      className: "btn btn-secondary",
-                      "data-wizard": "next",
-                      children: ["Next ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("i", {
-                        className: "fa fa-angle-right ml-1"
-                      })]
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
                       onClick: handleSubmit,
-                      type: "button",
-                      className: "btn btn-primary d-none",
-                      "data-wizard": "finish",
+                      className: "btn btn-primary",
                       children: "Escape Room Create"
-                    })]
-                  })]
+                    })
+                  })
                 })
               })]
             })]
@@ -4675,6 +4648,7 @@ var Edit = function Edit(props) {
     axios__WEBPACK_IMPORTED_MODULE_3___default().post("/api/escapeRoom/".concat(escapeRoom.id), data, config).then(function (res) {
       if (res.data.success) {
         setSubmitting(false);
+        props.history.push('/admin/escapeRoom');
       } else {
         sweetalert__WEBPACK_IMPORTED_MODULE_7___default()(res.data.message);
         setSubmitting(true);
@@ -4807,6 +4781,14 @@ var Edit = function Edit(props) {
                   }), errors.price && touched.price && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
                     className: "form-error",
                     children: errors.price
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Component_Form_CustomInput__WEBPACK_IMPORTED_MODULE_5__["default"], {
+                    title: "Thema",
+                    value: values.thema,
+                    onChange: handleChange('thema'),
+                    className: "form-control"
+                  }), errors.thema && touched.thema && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+                    className: "form-error",
+                    children: errors.thema
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
                     className: "form-group",
                     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("h2", {
@@ -4833,7 +4815,7 @@ var Edit = function Edit(props) {
                           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("label", {
                             children: "Start Time:"
                           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("input", {
-                            type: "text",
+                            type: "datetime-local",
                             className: "form-control",
                             name: "startTime",
                             onChange: function onChange(event) {
@@ -4846,7 +4828,7 @@ var Edit = function Edit(props) {
                           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("label", {
                             children: "End Time:"
                           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("input", {
-                            type: "text",
+                            type: "datetime-local",
                             className: "form-control",
                             name: "endTime",
                             onChange: function onChange(event) {
@@ -4884,7 +4866,7 @@ var Edit = function Edit(props) {
                       type: "button",
                       onClick: handleSubmit,
                       className: "btn btn-primary",
-                      children: "Escape Room Create"
+                      children: "Escape Room Edit"
                     })
                   })
                 })

@@ -108,11 +108,6 @@ const Create = (props) => {
                     1. Personal
                   </a>
                 </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#wizard-progress-step2" data-toggle="tab">
-                    2. Details
-                  </a>
-                </li>
               </ul>
               {/* END Step Tabs */}
               {/* Form */}
@@ -123,8 +118,8 @@ const Create = (props) => {
                     <div
                       className="progress-bar progress-bar-striped progress-bar-animated bg-primary"
                       role="progressbar"
-                      style={{ width: "50%" }}
-                      aria-valuenow={50}
+                      style={{ width: "100%" }}
+                      aria-valuenow={100}
                       aria-valuemin={0}
                       aria-valuemax={100}
                     />
@@ -157,11 +152,7 @@ const Create = (props) => {
                       className="form-control"
                     />
                     {(errors.price && touched.price) && <p className='form-error'>{errors.price}</p>}
-                  </div>
-                  {/* END Step 1 */}
-                  {/* Step 2 */}
-                  <div className="tab-pane" id="wizard-progress-step2" role="tabpanel">
-                  <div className="form-group">
+                    <div className="form-group">
                       <h2>Escape Rooms Description</h2>
                       <CKEditor
                         data={values.text}
@@ -198,38 +189,27 @@ const Create = (props) => {
                       }
                     </div>
                   </div>
+                  {/* END Step 1 */}
+                  {/* Step 2 */}
+                  <div className="tab-pane" id="wizard-progress-step2" role="tabpanel">
+                  
+                  </div>
                   {/* END Step 2 */}
                   
                 </div>
                 {/* END Steps Content */}
                 {/* Steps Navigation */}
                 <div className="block-content block-content-sm block-content-full bg-body-light rounded-bottom">
-                  <div className="row">
-                    <div className="col-6">
+                <div className="row">
+                    <div className="col-12 text-right">
                       <button
                         type="button"
-                        className="btn btn-secondary"
-                        data-wizard="prev"
-                      >
-                        <i className="fa fa-angle-left mr-1" /> Previous
-                      </button>
-                    </div>
-                    <div className="col-6 text-right">
-                      <button
-                        type="button"
-                        className="btn btn-secondary"
-                        data-wizard="next"
-                      >
-                        Next <i className="fa fa-angle-right ml-1" />
-                      </button>
-                      <button
                         onClick={handleSubmit}
-                        type='button'
-                        className="btn btn-primary d-none"
-                        data-wizard="finish"
+                        className="btn btn-primary"
                       >
-                         Escape Room Create
+                        Escape Room Create 
                       </button>
+                      
                     </div>
                   </div>
                 </div>

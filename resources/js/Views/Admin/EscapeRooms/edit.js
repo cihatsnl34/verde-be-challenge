@@ -37,6 +37,7 @@ const Edit = (props) => {
       .then((res) => {
         if(res.data.success){
           setSubmitting(false)
+          props.history.push('/admin/escapeRoom')
       }
       else 
       {
@@ -174,6 +175,13 @@ useEffect(() => {
                       className="form-control"
                     />
                     {(errors.price && touched.price) && <p className='form-error'>{errors.price}</p>}
+                    <CustomInput
+                      title="Thema"
+                      value={values.thema}
+                      onChange={handleChange('thema')}
+                      className="form-control"
+                    />
+                    {(errors.thema && touched.thema) && <p className='form-error'>{errors.thema}</p>}
                     <div className="form-group">
                       <h2>Escape Room Description</h2>
                       <CKEditor
@@ -191,11 +199,11 @@ useEffect(() => {
                           <div className='row mt-3'>
                             <div className='col-md-5'>
                               <label>Start Time:</label>
-                              <input type='text' className='form-control' name = "startTime" onChange={(event) => changeTextInput(event,index)} value={item.startTime}/>
+                              <input type='datetime-local' className='form-control' name = "startTime" onChange={(event) => changeTextInput(event,index)} value={item.startTime}/>
                             </div>
                             <div className='col-md-5'>
                               <label>End Time:</label>
-                              <input type='text' className='form-control' name = "endTime" onChange={(event) => changeTextInput(event,index)} value={item.endTime}/>
+                              <input type='datetime-local' className='form-control' name = "endTime" onChange={(event) => changeTextInput(event,index)} value={item.endTime}/>
                             </div>
                             <div style={{ display:'flex',justifyContent:'center',alignItems:'flex-end'}} className='col-md-1'>
                               <button onClick={() => removeTimeSlot(index)} type='button' className='btn btn-danger'>X</button>
@@ -217,7 +225,7 @@ useEffect(() => {
                         onClick={handleSubmit}
                         className="btn btn-primary"
                       >
-                        Escape Room Create 
+                        Escape Room Edit 
                       </button>
                       
                     </div>
