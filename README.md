@@ -12,3 +12,9 @@
 1 - Open the Terminal<br><br>
 2 - Paste '/vendor/bin/phpunit' terminal<br><br>
 3 - Press enter and run.
+
+# Admin Login
+Email -> cihatsenell@gmail.com Password -> 123
+
+# User Login
+Email -> cihat-cy@hotmail.com Password -> 123
